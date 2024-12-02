@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const createStore_1 = require("../../../controllers/admin/store/createStore");
+const clerk_sdk_node_1 = require("@clerk/clerk-sdk-node");
+const getStore_1 = require("../../../controllers/admin/store/getStore");
+const getUserHasStore_1 = require("../../../controllers/admin/store/getUserHasStore");
+const getStoresList_1 = require("../../../controllers/admin/store/getStoresList");
+const updateStorePrefrences_1 = require("../../../controllers/admin/store/updateStorePrefrences");
+const router = (0, express_1.Router)();
+router.get('/getStore/:storeId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), getStore_1.getStore);
+router.get('/checkIfUserHasStore', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), getUserHasStore_1.getUserHasStore);
+router.get('/getStoresList', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), getStoresList_1.getStoresList);
+router.patch('/updateStore/:storeId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), updateStorePrefrences_1.updateStore);
+router.post('/create-store', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), createStore_1.createStore);
+router.delete('/deleteStore/:storeId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), updateStorePrefrences_1.deleteStore);
+exports.default = router;

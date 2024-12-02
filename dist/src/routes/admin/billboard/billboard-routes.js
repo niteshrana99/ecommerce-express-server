@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const createBillboard_1 = require("../../../controllers/admin/billboard/createBillboard");
+const clerk_sdk_node_1 = require("@clerk/clerk-sdk-node");
+const getAllBillbaords_1 = require("../../../controllers/admin/billboard/getAllBillbaords");
+const getBillboardById_1 = require("../../../controllers/admin/billboard/getBillboardById");
+const updateBillboard_1 = require("../../../controllers/admin/billboard/updateBillboard");
+const deleteBillboard_1 = require("../../../controllers/admin/billboard/deleteBillboard");
+const router = (0, express_1.Router)();
+router.get('/getBillboardList/:storeId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), getAllBillbaords_1.getAllBillbaords);
+router.get('/getBillboardById/:billboardId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), getBillboardById_1.getBillBoardById);
+router.post('/createBillboard', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), createBillboard_1.createBillboard);
+router.patch('/updateBillboard', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), updateBillboard_1.updateBillboard);
+router.delete('/deleteBillboard/:billboardId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), deleteBillboard_1.deleteBillboard);
+exports.default = router;
