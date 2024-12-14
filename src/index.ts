@@ -13,6 +13,9 @@ app.use(cors());
 require('dotenv').config();
 
 //routes
+// app.use('/', (req, res) => {
+//   res.send('Hello World!');
+// });
 app.use('/admin', adminStoreRouter);
 app.use('/admin', adminBillboardRouter);
 
