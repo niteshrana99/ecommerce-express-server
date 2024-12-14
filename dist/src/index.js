@@ -14,9 +14,9 @@ app.use(cors());
 //config
 require('dotenv').config();
 //routes
-// app.use('/', (req, res) => {
-//   res.send('Hello World!');
-// });
+app.use('/', (req, res) => {
+    res.json('Hello World!');
+});
 app.use('/admin', store_routes_1.default);
 app.use('/admin', billboard_routes_1.default);
 // Error handling middleware function
