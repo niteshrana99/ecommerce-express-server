@@ -13,10 +13,6 @@ app.use(express_1.default.json());
 app.use(cors());
 //config
 require('dotenv').config();
-//routes
-app.use('/', (req, res) => {
-    res.json('Hello World!');
-});
 app.use('/admin', store_routes_1.default);
 app.use('/admin', billboard_routes_1.default);
 // Error handling middleware function
