@@ -3,6 +3,7 @@ var cors = require('cors');
 
 import adminStoreRouter from './routes/admin/store/store-routes';
 import adminBillboardRouter from './routes/admin/billboard/billboard-routes';
+import adminCategoriesRouter from './routes/admin/categories/categories-routes';
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
@@ -14,6 +15,7 @@ require('dotenv').config();
 
 app.use('/admin', adminStoreRouter);
 app.use('/admin', adminBillboardRouter);
+app.use('/admin', adminCategoriesRouter);
 
 // Error handling middleware function
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

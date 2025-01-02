@@ -21,6 +21,7 @@ model Store {
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   Billboard Billboard[]
+  Category Category[]
 }
 
 model Billboard {
@@ -31,6 +32,21 @@ model Billboard {
   storeId         String
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+  Category Category[]
 
   @@index([storeId])
+}
+
+model Category {
+  id String @id @default(uuid())
+  name String
+  store Store @relation(fields: [storeId], references: [id])
+  storeId String
+  billboard Billboard @relation(fields: [billboardId], references: [id])
+  billboardId  String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([storeId])
+  @@index([billboardId])
 }

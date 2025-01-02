@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const clerk_sdk_node_1 = require("@clerk/clerk-sdk-node");
+const getCategories_1 = require("../../../controllers/admin/categories/getCategories");
+const getCategoryById_1 = require("../../../controllers/admin/categories/getCategoryById");
+const createCategory_1 = require("../../../controllers/admin/categories/createCategory");
+const updateCategory_1 = require("../../../controllers/admin/categories/updateCategory");
+const deleteCategory_1 = require("../../../controllers/admin/categories/deleteCategory");
+const router = (0, express_1.Router)();
+router.get('/:storeId/categories', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), getCategories_1.getCategories);
+router.get('/:categoryId/category', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), getCategoryById_1.getCategoryById);
+router.post('/createCategory', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), createCategory_1.createCategory);
+router.patch('/updateCategory', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), updateCategory_1.updateCategory);
+router.patch('/updateCategory', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), updateCategory_1.updateCategory);
+router.delete('/deleteCategory/:categoryId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), deleteCategory_1.deleteCategory);
+exports.default = router;
