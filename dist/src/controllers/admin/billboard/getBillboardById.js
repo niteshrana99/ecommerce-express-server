@@ -13,16 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getBillBoardById = void 0;
-const express_1 = require("@clerk/express");
 const db_1 = __importDefault(require("../../../../db"));
 const getBillBoardById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { userId } = (0, express_1.getAuth)(req);
-    const { billboardId } = req.params;
-    if (!userId) {
-        res.status(401).json({ message: 'Unauthorized' });
-        return;
-    }
-    ;
+    const { billboardId, storeId } = req.params;
     if (!billboardId) {
         res.status(200).json({ data: null });
     }
@@ -30,6 +23,9 @@ const getBillBoardById = (req, res) => __awaiter(void 0, void 0, void 0, functio
     const response = yield db_1.default.billboard.findUnique({
         where: {
             id: billboardId,
+            store: {
+                id: storeId
+            }
         }
     });
     res.status(200).json(response);

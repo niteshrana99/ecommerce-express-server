@@ -8,9 +8,9 @@ const getBillboardById_1 = require("../../../controllers/admin/billboard/getBill
 const updateBillboard_1 = require("../../../controllers/admin/billboard/updateBillboard");
 const deleteBillboard_1 = require("../../../controllers/admin/billboard/deleteBillboard");
 const router = (0, express_1.Router)();
-router.get('/getBillboardList/:storeId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), getAllBillbaords_1.getAllBillbaords);
-router.get('/getBillboardById/:billboardId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), getBillboardById_1.getBillBoardById);
-router.post('/createBillboard', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), createBillboard_1.createBillboard);
-router.patch('/updateBillboard', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), updateBillboard_1.updateBillboard);
-router.delete('/deleteBillboard/:billboardId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), deleteBillboard_1.deleteBillboard);
+router.get('/:storeId/billboards', getAllBillbaords_1.getAllBillbaords);
+router.get('/:storeId/billboards/:billboardId', getBillboardById_1.getBillBoardById);
+router.post('/:storeId/billboards', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), createBillboard_1.createBillboard);
+router.patch('/:storeId/billboards/:billboardId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), updateBillboard_1.updateBillboard);
+router.delete('/:storeId/billboards/:billboardId', (0, clerk_sdk_node_1.ClerkExpressRequireAuth)(), deleteBillboard_1.deleteBillboard);
 exports.default = router;

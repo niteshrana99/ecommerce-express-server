@@ -2,19 +2,18 @@ import { getAuth } from "@clerk/express";
 import { Request, Response } from "express";
 import prisma from "../../../../db";
 
-export const deleteSize = async(req:Request, res: Response) => {
+export const deleteProduct= async(req:Request, res: Response) => {
     const { userId } = getAuth(req);
-    const { sizeId, storeId } = req.params;
+    const { productId } = req.params;
 
     if (!userId) {
         res.status(401).json({ message: 'Unauthorized' });
         return;
     }
 
-    const response = await prisma.size.delete({
+    const response = await prisma.product.delete({
         where: {
-            id: sizeId,
-            storeId
+            id: productId,
         },
     });
 

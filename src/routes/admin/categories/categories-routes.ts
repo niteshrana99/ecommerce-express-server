@@ -8,11 +8,10 @@ import { deleteCategory } from "../../../controllers/admin/categories/deleteCate
 
 const router = Router();
 
-router.get('/:storeId/categories', ClerkExpressRequireAuth(), getCategories);
-router.get('/:categoryId/category', ClerkExpressRequireAuth(), getCategoryById);
-router.post('/createCategory', ClerkExpressRequireAuth(), createCategory);
-router.patch('/updateCategory', ClerkExpressRequireAuth(), updateCategory);
-router.patch('/updateCategory', ClerkExpressRequireAuth(), updateCategory);
-router.delete('/deleteCategory/:categoryId', ClerkExpressRequireAuth(), deleteCategory);
+router.get('/:storeId/categories', getCategories);
+router.get('/:storeId/categories/:categoryId', getCategoryById);
+router.post('/:storeId/categories', ClerkExpressRequireAuth(), createCategory);
+router.patch('/:storeId/categories/:categoryId', ClerkExpressRequireAuth(), updateCategory);
+router.delete('/:storeId/categories/:categoryId', ClerkExpressRequireAuth(), deleteCategory);
 
 export default router;

@@ -8,13 +8,13 @@ import { deleteBillboard } from "../../../controllers/admin/billboard/deleteBill
 
 const router = Router();
 
-router.get('/getBillboardList/:storeId', ClerkExpressRequireAuth(), getAllBillbaords);
-router.get('/getBillboardById/:billboardId', ClerkExpressRequireAuth(), getBillBoardById);
+router.get('/:storeId/billboards', getAllBillbaords);
+router.get('/:storeId/billboards/:billboardId', getBillBoardById);
 
-router.post('/createBillboard', ClerkExpressRequireAuth(), createBillboard);
+router.post('/:storeId/billboards', ClerkExpressRequireAuth(), createBillboard);
 
-router.patch('/updateBillboard', ClerkExpressRequireAuth(), updateBillboard);
+router.patch('/:storeId/billboards/:billboardId', ClerkExpressRequireAuth(), updateBillboard);
 
-router.delete('/deleteBillboard/:billboardId', ClerkExpressRequireAuth(), deleteBillboard);
+router.delete('/:storeId/billboards/:billboardId', ClerkExpressRequireAuth(), deleteBillboard);
 
 export default router;

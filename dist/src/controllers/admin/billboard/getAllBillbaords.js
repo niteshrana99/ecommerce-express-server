@@ -13,21 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllBillbaords = void 0;
-const express_1 = require("@clerk/express");
 const db_1 = __importDefault(require("../../../../db"));
 const getAllBillbaords = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { userId } = (0, express_1.getAuth)(req);
     const { storeId } = req.params;
-    if (!userId) {
-        res.status(401).json({ message: 'Unauthorized' });
-        return;
-    }
     const response = yield db_1.default.billboard.findMany({
         where: {
             storeId,
-            store: {
-                userId
-            }
         }
     });
     res.status(200).json(response);

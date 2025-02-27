@@ -9,16 +9,22 @@ const store_routes_1 = __importDefault(require("./routes/admin/store/store-route
 const billboard_routes_1 = __importDefault(require("./routes/admin/billboard/billboard-routes"));
 const categories_routes_1 = __importDefault(require("./routes/admin/categories/categories-routes"));
 const size_routes_1 = __importDefault(require("./routes/admin/sizes/size-routes"));
+const color_routes_1 = __importDefault(require("./routes/admin/colors/color-routes"));
+const products_routes_1 = __importDefault(require("./routes/admin/products/products.routes"));
+const orders_routes_1 = __importDefault(require("./routes/admin/orders/orders-routes"));
 const app = (0, express_1.default)();
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.json());
 app.use(cors());
 //config
 require('dotenv').config();
-app.use('/admin', store_routes_1.default);
-app.use('/admin', billboard_routes_1.default);
-app.use('/admin', categories_routes_1.default);
-app.use('/admin', size_routes_1.default);
+app.use('/api', store_routes_1.default);
+app.use('/api', billboard_routes_1.default);
+app.use('/api', categories_routes_1.default);
+app.use('/api', size_routes_1.default);
+app.use('/api', color_routes_1.default);
+app.use('/api', products_routes_1.default);
+app.use('/api', orders_routes_1.default);
 // Error handling middleware function
 app.use((err, req, res, next) => {
     console.error(err.stack);

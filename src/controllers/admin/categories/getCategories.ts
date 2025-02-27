@@ -3,19 +3,19 @@ import prisma from "../../../../db";
 import { getAuth } from "@clerk/express";
 
 export const getCategories = async (req: Request, res: Response) => {
-    const { userId } = getAuth(req);
+    // const { userId } = getAuth(req);
     const { storeId } = req.params;
 
-    if(!userId) {
-        res.status(401).json({ message: 'Unauthorized' });
-        return;
-    }
+    // if(!userId) {
+    //     res.status(401).json({ message: 'Unauthorized' });
+    //     return;
+    // }
     const response = await prisma.category.findMany({
         where: {
             storeId,
-            store: {
-                userId,
-            },
+            // store: {
+            //     userId,
+            // },
         },
         select: {
             id: true,
